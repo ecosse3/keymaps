@@ -1,4 +1,4 @@
-USER = ecosse
+USER = ecosse3
 KEYBOARDS = sofle
 
 # Keymap path
