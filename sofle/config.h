@@ -53,6 +53,7 @@
 
 #ifdef RGBLIGHT_ENABLE
     #undef RGBLED_NUM
+    #undef RGBLED_SPLIT
 
   // #define RGBLIGHT_ANIMATIONS
 	// #define RGBLIGHT_EFFECT_BREATHING
@@ -67,8 +68,7 @@
 	// #define RGBLIGHT_EFFECT_TWINKLE
 
     #define RGBLED_NUM 70
-	//#define RGBLED_SPLIT
-	#define RGBLED_SPLIT { 35, 35 } // haven't figured out how to use this yet
+    #define RGBLED_SPLIT { 35, 35 }
 
 	//#define RGBLED_NUM 30
     #define RGBLIGHT_LIMIT_VAL 120
