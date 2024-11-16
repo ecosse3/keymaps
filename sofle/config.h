@@ -20,7 +20,6 @@
 /* Select hand configuration */
 // https://thomasbaart.nl/2018/12/01/reducing-firmware-size-in-qmk/
 
-
 #define MASTER_LEFT
 // #define MASTER_RIGHT
 // #define EE_HANDS
@@ -35,7 +34,7 @@
   #undef TAPPING_TERM
   #define TAPPING_TERM 200
 #endif
-#define ENCODER_DIRECTION_FLIP
+#define ENCODER_DEBOUNCE 10
 
 
 #define RGBLIGHT_SLEEP
@@ -52,29 +51,30 @@
 #endif
 
 #ifdef RGBLIGHT_ENABLE
-    #undef RGBLED_NUM
-    #undef RGBLED_SPLIT
+  #undef RGBLED_NUM
+  #undef RGBLED_SPLIT
 
-  // #define RGBLIGHT_ANIMATIONS
+  #define RGBLIGHT_DEFAULT_MODE RGBLIGHT_MODE_STATIC_LIGHT
+  #define RGBLIGHT_DEFAULT_HUE 100
+
 	// #define RGBLIGHT_EFFECT_BREATHING
-	#define RGBLIGHT_EFFECT_RAINBOW_MOOD
-	#define RGBLIGHT_EFFECT_RAINBOW_SWIRL
+	// #define RGBLIGHT_EFFECT_RAINBOW_MOOD
+	// #define RGBLIGHT_EFFECT_RAINBOW_SWIRL
 	// #define RGBLIGHT_EFFECT_SNAKE
 	// #define RGBLIGHT_EFFECT_KNIGHT
 	// #define RGBLIGHT_EFFECT_CHRISTMAS
 	// #define RGBLIGHT_EFFECT_STATIC_GRADIENT
-	#define RGBLIGHT_EFFECT_RGB_TEST
+  // #define RGBLIGHT_EFFECT_RGB_TEST
 	// #define RGBLIGHT_EFFECT_ALTERNATING
 	// #define RGBLIGHT_EFFECT_TWINKLE
 
-    #define RGBLED_NUM 70
-    #define RGBLED_SPLIT { 35, 35 }
+  #define RGBLED_NUM 70
+  #define RGBLED_SPLIT { 35, 35 }
 
-	//#define RGBLED_NUM 30
-    #define RGBLIGHT_LIMIT_VAL 120
-    #define RGBLIGHT_HUE_STEP 10
-    #define RGBLIGHT_SAT_STEP 17
-    #define RGBLIGHT_VAL_STEP 17
+  #define RGBLIGHT_LIMIT_VAL 120
+  #define RGBLIGHT_HUE_STEP 10
+  #define RGBLIGHT_SAT_STEP 17
+  #define RGBLIGHT_VAL_STEP 17
 #endif
 
 #ifdef RGB_MATRIX_ENABLE

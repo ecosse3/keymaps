@@ -102,7 +102,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_LSFT, KC_Z,   KC_X,    KC_C,    KC_V,    KC_B,  KC_MUTE,     KC_D_MUTE,KC_N,    KC_M,   KC_COMM, KC_DOT, KC_SLSH, KC_MINUS,
 
     //|------+-------+--------+--------+--------+------|  ===  |   |  ===  |--------+-------+--------+--------+--------+---------|
-                    KC_LGUI, KC_HYPR, KC_LALT, KC_LOWER, KC_SPC  ,   KC_ENT,  KC_RAISE, KC_RCTL, KC_HYPR, KC_RGUI
+                    KC_LALT, LAG_T(XXXXXXX), KC_LGUI, KC_LOWER, KC_SPC  ,   KC_ENT,  KC_RAISE, KC_RCTL,  KC_HYPR, KC_RALT
     //            \--------+--------+--------+---------+-------|   |--------+---------+--------+---------+-------/
   ),
   /*
@@ -417,7 +417,7 @@ bool oled_task_user(void) {
 uint8_t current_endpoint = LEFT_EP_ADDR;
 
 // Define a function to switch between the left and right USB endpoints
-void switch_endpoint(void) {
+/* void switch_endpoint(void) {
   if (current_endpoint == LEFT_EP_ADDR) {
     current_endpoint = RIGHT_EP_ADDR;
   } else {
@@ -426,7 +426,7 @@ void switch_endpoint(void) {
   // Switch the USB endpoint
   usb_set_ep_addr(USB_ENDPOINT_IN(1), current_endpoint);
   usb_set_ep_addr(USB_ENDPOINT_OUT(1), current_endpoint);
-}
+} */
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
@@ -531,17 +531,17 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 bool encoder_update_user(uint8_t index, bool clockwise) {
   if (index == 0) {
     if (clockwise) {
-      tap_code(KC_VOLD);
-    } else {
       tap_code(KC_VOLU);
+    } else {
+      tap_code(KC_VOLD);
     }
-} else if (index == 1) {
+  } else if (index == 1) {
     switch (get_highest_layer(layer_state)) {
       case _XBOX:
       case _QWERTY:
         if (clockwise) {
           tap_code(KC_PGDN);
-      } else {
+        } else {
           tap_code(KC_PGUP);
         }
         break;
@@ -549,14 +549,14 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
       case _LOWER:
         if (clockwise) {
           tap_code(KC_DOWN);
-      } else {
+        } else {
           tap_code(KC_UP);
         }
         break;
       default:
         if (clockwise) {
           tap_code(KC_WH_D);
-      } else {
+        } else {
           tap_code(KC_WH_U);
         }
         break;
